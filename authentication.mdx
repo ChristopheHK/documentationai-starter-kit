@@ -1,57 +1,158 @@
 ---
-title: Authentication (Sample)
-description: Sample guidance for authentication and OpenAPI usage.
+title: Authentification
+description: Comprendre la connexion par lien magique, les invitations au portail et les rôles d’accès dans Avosmarc.
 ---
 
-## Overview
+## Vue d’ensemble
 
-This is sample content. Replace tokens, URLs, headers, and flows with your real authentication requirements.
+Avosmarc utilise une authentification sans mot de passe basée sur des liens magiques envoyés par email et des liens d’invitation sécurisés pour le portail invité. Les droits d’accès sont ensuite contrôlés par des rôles au niveau de l’espace de travail et des dossiers.
 
 <Callout kind="info">
 
-This site ships with placeholder content for authentication. Update this page and `openapi.yaml` to match your real API before sharing with users.
+Ne transférez jamais vos emails de connexion ou liens d’invitation à une autre personne. Ces liens donnent accès direct à vos dossiers et peuvent contenir des informations confidentielles.
 
 </Callout>
 
-This API uses OpenAPI to describe endpoints, parameters, and responses. The reference is generated from `openapi.yaml`, so keep that file up to date as your API evolves.
+## Connexion des pros par lien magique
 
-## Authentication
+Les médiateurs et utilisateurs pros se connectent à Avosmarc via un lien magique envoyé à leur adresse email professionnelle. Aucun mot de passe n’est requis.
 
-Use a bearer token in the `Authorization` header for authenticated requests. Replace the base URL and token with values for your own API.
+<Steps>
 
-```bash
-curl https://api.example.com/v1/example \
-  -H "Authorization: Bearer YOUR_TOKEN"
-```
+  <Step title="Saisir votre adresse email" icon="lock">
 
-<ParamField header="Authorization" param-type="string" required="true">
-  `Bearer YOUR_TOKEN`
-</ParamField>
+  - Accédez à l’écran de connexion Avosmarc.
+  - Entrez votre adresse email professionnelle utilisée pour votre compte.
+  - Validez pour demander un lien de connexion.
 
-## Keep OpenAPI in sync
+  Si l’adresse est reconnue, Avosmarc envoie un email contenant un lien magique de connexion.
 
-Define your authentication and base settings in `openapi.yaml` so the API Reference stays accurate and consistent.
+  </Step>
 
-At a minimum, you should:
+  <Step title="Ouvrir l’email de lien magique" icon="inbox">
 
-- Define one or more security schemes that describe how clients authenticate (for example, bearer token, API key in a header, or other scheme).
-- Reference those security schemes on operations that require authentication so they are clearly marked as secured.
-- Set the correct base URL and any required global headers (for example, versioning or tenant headers) so example requests are copy-pasteable.
+  - Ouvrez votre boîte de réception liée à cette adresse.
+  - Recherchez l’email Avosmarc contenant un lien de connexion.
+  - Vérifiez que l’email provient bien de l’expéditeur habituel d’Avosmarc avant de cliquer.
 
-When your real authentication flow changes (for example, new header names, token formats, or additional requirements), update `openapi.yaml`. The generated API Reference will then reflect your current auth model without needing to edit each endpoint page by hand.
+  Le lien magique est limité dans le temps et ne fonctionne qu’une seule fois.
 
-## Using the API reference
+  </Step>
 
-Use the API Reference to explore endpoints, required parameters, and example responses. When you change authentication headers or base URLs, update `openapi.yaml` so the generated reference matches what your clients should use.
+  <Step title="Cliquer sur le lien magique" icon="arrow-right">
 
-## Common mistakes
+  - Cliquez sur le bouton ou le lien « Se connecter à Avosmarc » dans l’email.
+  - Le navigateur ouvre automatiquement Avosmarc et vous connecte à votre espace de travail.
+  - Vous arrivez sur votre portail pro avec vos dossiers et espaces accessibles selon vos rôles.
 
-<Expandable title="Why am I getting a 401?" default-open="false">
+  Si le lien a expiré, redemandez simplement un nouveau lien de connexion depuis l’écran de login.
 
-Verify that:
+  </Step>
 
-- The token is valid and not expired.
-- The token is sent in the `Authorization` header.
-- The header value includes the `Bearer` prefix and a space before the token.
+</Steps>
+
+## Accès invité via lien d’invitation
+
+Les parties, avocats et autres invités accèdent au portail invité grâce à un lien d’invitation sécurisé. Ce lien contient un jeton d’invitation qui ouvre uniquement le dossier concerné.
+
+<Steps>
+
+  <Step title="Recevoir le lien d’invitation" icon="mail">
+
+  - Le médiateur ou l’équipe envoie une invitation par email depuis Avosmarc.
+  - L’email contient un lien vers le portail invité.
+  - Chaque lien est unique pour un dossier et un invité donnés.
+
+  Conservez cet email pour pouvoir revenir au dossier pendant toute la durée de la médiation.
+
+  </Step>
+
+  <Step title="Ouvrir le portail invité" icon="monitor">
+
+  - Cliquez sur le lien d’invitation dans l’email.
+  - Le navigateur ouvre la page du portail invité associée à votre jeton d’invitation.
+  - Avosmarc identifie automatiquement votre invitation sans mot de passe.
+
+  Vous voyez uniquement le dossier et les informations qui vous sont partagées.
+
+  </Step>
+
+  <Step title="Accepter ou refuser l’invitation" icon="check-circle">
+
+  - Sur le portail invité, choisissez d’**accepter** ou de **refuser** l’invitation.
+  - Vous pouvez ajouter un **commentaire** pour préciser votre réponse (par exemple disponibilité, conditions, réserves).
+  - Validez votre choix pour l’enregistrer.
+
+  Le médiateur voit votre réponse et vos commentaires dans l’interface pro, ce qui permet de cadrer la suite de la procédure.
+
+  </Step>
+
+</Steps>
+
+## Rôles et niveaux d’accès
+
+Les droits d’accès dans Avosmarc se structurent à deux niveaux : l’espace de travail (workspace) et les dossiers de médiation.
+
+### Rôles d’espace de travail
+
+Les rôles d’espace de travail déterminent ce que vous pouvez faire globalement dans Avosmarc :
+
+- **Owner** : gère la facturation, les utilisateurs et les paramètres globaux du workspace.
+- **Admin** : administre les utilisateurs, les accès et la structure des dossiers.
+- **Member** : traite les dossiers, échange avec les invités et gère le contenu des médiations.
+- **Readonly** : consulte les informations sans pouvoir les modifier ou inviter de nouveaux participants.
+
+Si vous n’arrivez pas à accéder à une section (par exemple la gestion des utilisateurs), votre rôle d’espace de travail est probablement trop limité.
+
+### Rôles au niveau des dossiers
+
+Chaque dossier attribue en plus un rôle précis à chaque participant :
+
+- **Mediator** : pilote le dossier, invite les parties, contrôle la visibilité des contenus et des commentaires.
+- **Party_x** : représente une partie à la médiation (par exemple Partie A, Partie B) avec accès aux éléments qui la concernent.
+- **Lawyer_x** : avocat associé à une partie, avec une visibilité alignée sur celle de son client.
+- **Observer** : observe le dossier sans intervenir directement (par exemple un tiers ou un représentant).
+
+Le cumul de votre rôle d’espace de travail et de votre rôle de dossier détermine ce que vous voyez, ce que vous pouvez modifier et avec qui vous pouvez échanger.
+
+## Commentaires internes vs partagés
+
+Les commentaires dans Avosmarc peuvent être internes (visibles uniquement en interne) ou partagés avec certaines parties.
+
+- **Commentaires internes** : réservés aux médiateurs et, selon le contexte, à l’équipe interne. Utilisez-les pour vos notes, analyses et échanges confidentiels.
+- **Commentaires partagés** : visibles par les parties ou avocats concernés, selon la configuration du dossier. Utilisez-les pour les messages que vous assumez de communiquer aux participants.
+
+<Callout kind="info">
+
+Avant de publier un commentaire, vérifiez toujours s’il est marqué comme **interne** ou **partagé**. Un commentaire partagé devient visible pour les parties concernées et ne doit jamais contenir d’informations que vous souhaitez garder confidentielles.
+
+</Callout>
+
+## Résolution des problèmes fréquents
+
+<Expandable title="Je ne reçois pas l’email avec le lien magique" default-open="false">
+
+- Vérifiez d’abord le dossier **Courrier indésirable / Spam**.
+- Confirmez que l’adresse email saisie sur l’écran de connexion est exactement celle associée à votre compte.
+- Demandez à votre service informatique si des filtres anti-spam bloquent les emails Avosmarc.
+- Si le problème persiste, contactez le support Avosmarc en indiquant votre adresse email et l’heure approximative de la tentative de connexion.
+
+</Expandable>
+
+<Expandable title="Mon lien d’invitation ne fonctionne plus" default-open="false">
+
+- Le lien peut avoir **expiré** ou avoir déjà été utilisé dans un autre navigateur/appareil.
+- Réessayez en copiant-collant le lien complet dans la barre d’adresse, sans le tronquer.
+- Si le médiateur a mis à jour la liste des invités, votre ancien lien peut avoir été invalidé.
+- Demandez au médiateur de vous renvoyer une **nouvelle invitation** pour le dossier.
+
+</Expandable>
+
+<Expandable title="Je ne vois pas tous les documents du dossier" default-open="false">
+
+- Votre rôle (party_x, lawyer_x, observer) peut limiter la visibilité à certains éléments uniquement.
+- Certains documents ou commentaires peuvent être marqués comme **internes** et donc non visibles sur le portail invité.
+- Actualisez la page pour vérifier que les derniers ajouts ont bien été chargés.
+- Si vous pensez qu’un document devrait vous être accessible, signalez-le au médiateur qui pourra ajuster la visibilité si nécessaire.
 
 </Expandable>

@@ -1,58 +1,104 @@
 ---
-title: Quickstart
-description: Minimal steps to customize this sample starter kit.
+title: Démarrage rapide
+description: Suivez un scénario complet pour créer votre workspace, ouvrir un dossier de médiation, inviter les participants au portail invité et suivre leurs réponses.
 ---
-## Overview
 
-<Callout kind="alert" collapsed="false">
-  This site ships with placeholder content. Use this quickstart to replace it with your real product docs.
+## Démarrer une première médiation avec Avosmarc
+
+<Callout kind="info">
+
+Ce guide vous accompagne pas à pas pour réaliser votre première médiation dans Avosmarc : du workspace au premier commentaire partagé avec vos participants.
+
 </Callout>
 
-## 1. Update a page
+## 1. Vérifier ou créer votre workspace
 
 <Steps>
-  <Step title="Edit introduction" icon="edit" title-type="p">
-    Replace the sample introduction with a concise overview of your product and the key actions you want new users to take first.
+  <Step title="Accéder à vos workspaces" icon="home" title-type="p">
+    Depuis votre compte Avosmarc, ouvrez la section dédiée aux workspaces. Si un workspace existe déjà pour votre structure (cabinet, centre de médiation), utilisez-le pour ce premier dossier.
   </Step>
 
-  <Step title="Preview your change" icon="monitor" title-type="p">
-    Use your dashboard board editor to confirm the updated introduction looks and reads as expected.
+  <Step title="Créer un nouveau workspace si nécessaire" icon="plus" title-type="p">
+    Si vous n'avez pas encore de workspace ou si vous devez séparer vos activités, créez un nouveau workspace et attribuez-lui un nom clair. En tant que médiateur, vérifiez que vous disposez au moins d'un rôle <code>owner</code> ou <code>admin</code> sur ce workspace pour pouvoir gérer les dossiers.
   </Step>
 </Steps>
 
-## 2. Add a new page
+## 2. Créer un dossier de médiation (brouillon)
 
 <Steps>
-  <Step title="Add a page" icon="file-text" title-type="p">
-    Create a new `page` by clicking on the + button from the left navigation bar of dashboard. If you are using git, create the .mdx file and add to navigation bar using documentation.json
+  <Step title="Ouvrir la création de dossier" icon="file-text" title-type="p">
+    Dans le workspace choisi, accédez à la liste des dossiers de médiation et lancez la création d'un nouveau dossier. Avosmarc crée le dossier avec le statut <code>brouillon</code>, ce qui vous permet de le préparer avant toute invitation.
+  </Step>
+
+  <Step title="Renseigner les informations clés" icon="edit" title-type="p">
+    Saisissez les informations essentielles du dossier (titre, description courte, contexte) et enregistrez. Assurez-vous que le statut du dossier est toujours <code>brouillon</code> tant que vous n'avez pas finalisé la liste des participants.
   </Step>
 </Steps>
 
-## Example onboarding flow (replace with yours)
+## 3. Ajouter les participants au dossier
 
-1. Sign up for an account and verify your email.
+<Steps>
+  <Step title="Définir le médiateur" icon="users" title-type="p">
+    Dans la section membres du dossier, ajoutez-vous comme <code>mediator</code> si ce n'est pas déjà fait. Ce rôle vous donne la maîtrise de la conduite de la médiation dans Avosmarc.
+  </Step>
 
-2. Create your first workspace, project, or environment.
+  <Step title="Ajouter les parties" icon="users" title-type="p">
+    Ajoutez chaque partie en lui attribuant un rôle de type <code>party_x</code> (par exemple pour distinguer clairement chaque partie). Indiquez au minimum le nom et l'email afin de pouvoir envoyer les invitations au portail invité.
+  </Step>
 
-3. Add one integration or data source to connect your existing tools.
+  <Step title="Ajouter les avocats et observateurs si besoin" icon="users" title-type="p">
+    Lorsque des conseils interviennent, ajoutez-les avec un rôle de type <code>lawyer_x</code>. Pour toute personne qui doit uniquement suivre le dossier sans intervenir directement, utilisez le rôle <code>observer</code>. Enregistrez vos modifications pour mettre à jour la liste des membres du dossier.
+  </Step>
+</Steps>
 
-4. Complete a guided action (for example, run your first job or publish your first resource).
+## 4. Envoyer les invitations vers le portail invité
 
-5. Invite a teammate and assign a basic role or permission.
+<Steps>
+  <Step title="Préparer les invitations par email" icon="send" title-type="p">
+    Depuis la vue des membres du dossier, sélectionnez les participants à inviter au portail invité (parties, avocats, observateurs). Vérifiez leurs adresses email et, si besoin, personnalisez le message d'accompagnement pour expliquer le contexte de la médiation.
+  </Step>
 
-## 3. Connect API Reference (optional)
+  <Step title="Envoyer et suivre les statuts d'invitation" icon="monitor" title-type="p">
+    Envoyez les invitations par email. Chaque invité reçoit un lien vers le portail invité où il peut <code>accept</code> ou <code>refuse</code> la médiation et ajouter un commentaire à sa réponse. Dans Avosmarc, suivez ces réponses pour savoir qui a accepté, refusé ou n'a pas encore répondu.
+  </Step>
+</Steps>
 
-If you have an API, replace `openapi.yaml` with your real OpenAPI file. If you do not need an API reference, remove that tab either from dashboard or  `documentation.json`.
+## 5. Publier un premier commentaire partagé
 
-## Next steps
+<Steps>
+  <Step title="Rédiger un commentaire interne" icon="edit" title-type="p">
+    Dans le dossier, commencez par un commentaire interne pour structurer vos notes (par exemple, résumé de la situation ou points à clarifier). Ce type de commentaire reste visible uniquement par les membres internes du workspace.
+  </Step>
 
-<Columns cols="2">
-  <Card title="Core Concepts" href="/concepts" icon="layers" horizontal="false">
-    Keep the mental model simple and easy to scan.
+  <Step title="Créer un commentaire partagé" icon="message-square" title-type="p">
+    Lorsque vous êtes prêt à communiquer avec les participants, rédigez un commentaire que vous marquez comme <code>partagé</code>. Sélectionnez les membres du dossier qui doivent pouvoir le lire via le portail invité, puis publiez le commentaire pour qu'il devienne visible par les invités concernés.
+  </Step>
+
+  <Step title="Vérifier la visibilité côté portail invité" icon="monitor" title-type="p">
+    Contrôlez que le commentaire partagé apparaît bien dans la vue des participants ayant accepté l'invitation. Vous disposez maintenant d'un premier échange structuré entre vous et les parties, dans le cadre du dossier de médiation.
+  </Step>
+</Steps>
+
+## 6. Suivre le statut du dossier et les réponses
+
+<Steps>
+  <Step title="Contrôler les réponses accept/refuse" icon="list" title-type="p">
+    Revenez régulièrement sur la liste des membres du dossier pour voir qui a répondu à l'invitation. Les réponses <code>accept</code> et <code>refuse</code>, ainsi que les commentaires associés, vous aident à décider de la suite à donner au dossier.
+  </Step>
+
+  <Step title="Faire évoluer le statut du dossier" icon="settings" title-type="p">
+    Quand toutes les parties concernées ont répondu, faites évoluer le dossier depuis le statut <code>brouillon</code> vers <code>en attente d’accord</code>, <code>actif</code> ou <code>clôturé</code> selon l'avancement de la médiation. Le statut du dossier vous permet de suivre clairement la phase dans laquelle se trouve chaque médiation.
+  </Step>
+</Steps>
+
+## Étapes suivantes
+
+<Columns cols={2}>
+  <Card title="Concepts clés" href="/concepts" icon="book-open" horizontal="false">
+    Approfondissez la structure Avosmarc : workspaces, dossiers, statuts, rôles et types de commentaires.
   </Card>
 
-  <Card title="Authentication" href="/authentication" icon="lock" horizontal="false">
-    Add your real auth flows and security notes.
+  <Card title="Authentification" href="/authentication" icon="lock" horizontal="false">
+    Comprenez comment les médiateurs et invités accèdent à Avosmarc en toute sécurité.
   </Card>
 </Columns>
-
