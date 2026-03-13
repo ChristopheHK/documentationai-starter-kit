@@ -15,7 +15,7 @@ Ne transférez jamais vos emails de connexion ou liens d’invitation à une aut
 
 ## Connexion des pros par lien magique
 
-Les médiateurs et utilisateurs pros se connectent à Avosmarc via un lien magique envoyé à leur adresse email professionnelle. Aucun mot de passe n’est requis.
+Les médiateurs et utilisateurs pros se connectent à Avosmarc via une authentification par lien magique, sans mot de passe, envoyée à leur adresse email professionnelle. Lors de votre toute première connexion via le formulaire de création de compte, Avosmarc affiche une case à cocher de consentement RGPD/conditions que vous devez obligatoirement accepter avant de demander le lien magique, puis compléter quelques informations de base liées à votre profil et à votre espace de travail avant d’ouvrir l’interface pro.
 
 <Steps>
 
@@ -53,14 +53,14 @@ Les médiateurs et utilisateurs pros se connectent à Avosmarc via un lien magiq
 
 ## Accès invité via lien d’invitation
 
-Les parties, avocats et autres invités accèdent au portail invité grâce à un lien d’invitation sécurisé. Ce lien contient un jeton d’invitation qui ouvre uniquement le dossier concerné.
+Les parties, avocats et autres invités accèdent au portail invité grâce à un lien d’invitation sécurisé. Ce lien contient un jeton d’invitation qui ouvre uniquement le dossier concerné via une URL de type `/portal/invitation/{token}`.
 
 <Steps>
 
   <Step title="Recevoir le lien d’invitation" icon="mail">
 
   - Le médiateur ou l’équipe envoie une invitation par email depuis Avosmarc.
-  - L’email contient un lien vers le portail invité.
+  - L’email contient un lien vers une page d’invitation du portail invité de type `/portal/invitation/{token}`.
   - Chaque lien est unique pour un dossier et un invité donnés.
 
   Conservez cet email pour pouvoir revenir au dossier pendant toute la durée de la médiation.
@@ -83,11 +83,15 @@ Les parties, avocats et autres invités accèdent au portail invité grâce à u
   - Vous pouvez ajouter un **commentaire** pour préciser votre réponse (par exemple disponibilité, conditions, réserves).
   - Validez votre choix pour l’enregistrer.
 
-  Le médiateur voit votre réponse et vos commentaires dans l’interface pro, ce qui permet de cadrer la suite de la procédure.
+  Le médiateur voit votre réponse et vos commentaires dans l’interface pro, ce qui permet de cadrer la suite de la procédure. Après avoir accepté l’invitation, Avosmarc vous redirige vers la page du projet concerné de type `/portal/{projectId}`. Vous pouvez ensuite revenir sur le portail invité pour accéder à vos projets et dossiers invités sans avoir besoin de retrouver l’email initial, via la page d’accueil du portail `/portal`.
 
   </Step>
 
 </Steps>
+
+## Confirmation de suppression de compte
+
+Lorsque vous demandez la suppression de votre compte, Avosmarc envoie un email contenant un lien de confirmation de type `/confirm-delete-user/{token}`. Cliquez sur ce lien pour confirmer la suppression, après quoi vous êtes informé que votre compte est en cours de suppression et vous ne pouvez plus accéder à l’interface une fois l’opération finalisée.
 
 ## Rôles et niveaux d’accès
 
@@ -109,8 +113,8 @@ Si vous n’arrivez pas à accéder à une section (par exemple la gestion des u
 Chaque dossier attribue en plus un rôle précis à chaque participant :
 
 - **Mediator** : pilote le dossier, invite les parties, contrôle la visibilité des contenus et des commentaires.
-- **Party_x** : représente une partie à la médiation (par exemple Partie A, Partie B) avec accès aux éléments qui la concernent.
-- **Lawyer_x** : avocat associé à une partie, avec une visibilité alignée sur celle de son client.
+- **party_a à party_d** : représentent les différentes parties à la médiation (par exemple Partie A à Partie D) avec accès aux éléments qui les concernent.
+- **lawyer_a à lawyer_d** : avocats associés à chaque partie, avec une visibilité alignée sur celle de leur client.
 - **Observer** : observe le dossier sans intervenir directement (par exemple un tiers ou un représentant).
 
 Le cumul de votre rôle d’espace de travail et de votre rôle de dossier détermine ce que vous voyez, ce que vous pouvez modifier et avec qui vous pouvez échanger.
@@ -150,9 +154,18 @@ Avant de publier un commentaire, vérifiez toujours s’il est marqué comme **i
 
 <Expandable title="Je ne vois pas tous les documents du dossier" default-open="false">
 
-- Votre rôle (party_x, lawyer_x, observer) peut limiter la visibilité à certains éléments uniquement.
+- Votre rôle (party_a..party_d, lawyer_a..lawyer_d, observer) peut limiter la visibilité à certains éléments uniquement.
 - Certains documents ou commentaires peuvent être marqués comme **internes** et donc non visibles sur le portail invité.
 - Actualisez la page pour vérifier que les derniers ajouts ont bien été chargés.
 - Si vous pensez qu’un document devrait vous être accessible, signalez-le au médiateur qui pourra ajuster la visibilité si nécessaire.
+
+</Expandable>
+
+<Expandable title="Je suis redirigé vers le portail invité au lieu de l’interface Pro" default-open="false">
+
+- Si vous avez reçu un email d’**invitation** à un dossier (partie, avocat, observateur), Avosmarc vous connecte en tant qu’invité et vous redirige automatiquement vers le portail invité.
+- Utilisez pour vos connexions **pro** uniquement l’écran de login dédié aux médiateurs et utilisateurs internes, puis le lien magique envoyé à votre adresse professionnelle.
+- Vérifiez que vous ne cliquez pas sur un ancien lien d’invitation dans vos emails lorsque vous souhaitez accéder à l’interface pro.
+- Si vous êtes médiateur ou membre d’un workspace et que vous êtes toujours redirigé vers le portail invité, contactez le support Avosmarc en précisant l’adresse utilisée et le comportement observé.
 
 </Expandable>

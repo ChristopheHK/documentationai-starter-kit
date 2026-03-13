@@ -22,7 +22,7 @@ La bonne configuration des rôles et des accès est essentielle pour respecter l
     Chaque médiation est suivie dans un dossier dédié, avec ses parties, ses avocats, ses documents, ses échanges et son historique.
   </Card>
   <Card title="Statuts du dossier" icon="settings">
-    Un dossier peut être en `brouillon`, `en attente d’accord`, `actif` ou `clôturé`. Le statut reflète l’avancement procédural de la médiation.
+    Un dossier peut être en `brouillon`, `en attente d’accord`, `actif`, `clôturé` ou `archivé`. Certains workspaces ajoutent des statuts intermédiaires comme `en attente d’approbation`, `approuvé` ou `terminé` pour affiner le suivi.
   </Card>
   <Card title="Rôles dans un dossier" icon="shield">
     Les membres d’un dossier peuvent être `mediator`, `party_a` à `party_d`, `lawyer_a` à `lawyer_d` ou `observer`. Ces rôles définissent la place de chacun dans la médiation.
@@ -53,8 +53,16 @@ Les statuts principaux d’un dossier sont:
 
 - **Brouillon**: préparation du dossier, ajout des parties, définition du médiateur, aucun accès invité actif.
 - **En attente d’accord**: les invitations sont envoyées et les parties doivent accepter ou refuser la médiation.
+- **En attente d’approbation** *(optionnel)*: le dossier attend une décision interne ou une validation supplémentaire avant de poursuivre.
+- **Approuvé** *(optionnel)*: la validation interne ou organisationnelle est donnée, le dossier peut passer en actif dès que les conditions sont réunies.
 - **Actif**: toutes les parties nécessaires ont accepté; les échanges et séances de médiation sont en cours.
-- **Clôturé**: la médiation est terminée, avec ou sans accord; le dossier reste archivé en lecture seule.
+- **Terminé** *(optionnel)*: la médiation est achevée dans votre suivi opérationnel, en attente éventuelle de clôture ou d’archivage administratif.
+- **Clôturé**: la médiation est terminée, avec ou sans accord; le dossier reste disponible en lecture seule.
+- **Archivé**: le dossier n’est plus actif dans votre suivi courant et passe en conservation longue durée, avec des accès plus restreints selon votre politique interne.
+
+<Callout kind="info">
+Certains espaces de travail peuvent également afficher des statuts intermédiaires comme `en attente d’approbation`, `approuvé` ou `terminé`, utilisés pour affiner votre suivi interne.
+</Callout>
 
 <Callout kind="tip">
 Ne basculez un dossier en `actif` que lorsque vous avez reçu les réponses nécessaires via le portail invité. Cela garantit que les accès et notifications sont cohérents.
@@ -82,7 +90,7 @@ Le portail invité permet aux parties et à leurs avocats d’accéder au dossie
 - Depuis ce portail, l’invité peut **accepter** ou **refuser** la médiation.
 - Chaque réponse peut être accompagnée d’un **commentaire** expliquant l’acceptation ou le refus.
 
-En fonction des réponses reçues, vous faites évoluer le statut du dossier (par exemple de `en attente d’accord` vers `actif`).
+En fonction des réponses reçues, vous faites évoluer le statut du dossier (par exemple de `en attente d’accord` vers `actif`, puis éventuellement vers `clôturé` ou `archivé`).
 
 ## Commentaires internes et partagés
 
@@ -104,13 +112,13 @@ Avant de publier un commentaire, vérifiez s’il doit rester interne ou être p
   <Step title="Ouvrir un dossier de médiation" icon="file-text">
     Créez un nouveau dossier en **brouillon**, définissez les rôles dossier (`mediator`, `party_a-d`, `lawyer_a-d`, `observer`) et ajoutez les premières informations utiles.
   </Step>
-  <Step title="Inviter les parties via le portail invité" icon="upload">
+  <Step title="Inviter les parties via le portail invité" icon="send">
     Envoyez les invitations aux parties et à leurs avocats. Ils accèdent au portail invité, acceptent ou refusent la médiation et ajoutent éventuellement un commentaire.
   </Step>
   <Step title="Passer en actif et suivre la médiation" icon="play-circle">
     Quand les réponses nécessaires sont reçues, faites passer le dossier en statut `actif`, échangez via des commentaires partagés et consignez vos notes en commentaires internes.
   </Step>
   <Step title="Clôturer le dossier" icon="check-circle">
-    À la fin de la médiation, archivez le dossier en le passant en statut `clôturé`. Les informations restent disponibles selon les droits de chaque rôle.
+    À la fin de la médiation, archivez le dossier en le passant en statut `clôturé` ou `archivé`. Les informations restent disponibles selon les droits de chaque rôle.
   </Step>
 </Steps>

@@ -43,11 +43,11 @@ Ce guide vous accompagne pas à pas pour réaliser votre première médiation da
   </Step>
 
   <Step title="Ajouter les parties" icon="users" title-type="p">
-    Ajoutez chaque partie en lui attribuant un rôle de type <code>party_x</code> (par exemple pour distinguer clairement chaque partie). Indiquez au minimum le nom et l'email afin de pouvoir envoyer les invitations au portail invité.
+    Ajoutez chaque partie en lui attribuant un rôle spécifique parmi <code>party_a</code>, <code>party_b</code>, <code>party_c</code> ou <code>party_d</code> afin de distinguer clairement chaque partie. Indiquez au minimum le nom et l'email afin de pouvoir envoyer les invitations au portail invité.
   </Step>
 
   <Step title="Ajouter les avocats et observateurs si besoin" icon="users" title-type="p">
-    Lorsque des conseils interviennent, ajoutez-les avec un rôle de type <code>lawyer_x</code>. Pour toute personne qui doit uniquement suivre le dossier sans intervenir directement, utilisez le rôle <code>observer</code>. Enregistrez vos modifications pour mettre à jour la liste des membres du dossier.
+    Lorsque des conseils interviennent, ajoutez-les avec un rôle parmi <code>lawyer_a</code>, <code>lawyer_b</code>, <code>lawyer_c</code> ou <code>lawyer_d</code>. Pour toute personne qui doit uniquement suivre le dossier sans intervenir directement, utilisez le rôle <code>observer</code>. Enregistrez vos modifications pour mettre à jour la liste des membres du dossier.
   </Step>
 </Steps>
 
@@ -55,11 +55,11 @@ Ce guide vous accompagne pas à pas pour réaliser votre première médiation da
 
 <Steps>
   <Step title="Préparer les invitations par email" icon="send" title-type="p">
-    Depuis la vue des membres du dossier, sélectionnez les participants à inviter au portail invité (parties, avocats, observateurs). Vérifiez leurs adresses email et, si besoin, personnalisez le message d'accompagnement pour expliquer le contexte de la médiation.
+    Depuis la vue des membres du dossier, sélectionnez les participants à inviter au portail invité (parties, avocats, observateurs). Vérifiez leurs adresses email et, si besoin, personnalisez le message d'accompagnement pour expliquer le contexte de la médiation. Le lien d'invitation pointe vers une page de type <code>/portal/invitation/{token}</code> où chaque invité gère sa réponse.
   </Step>
 
   <Step title="Envoyer et suivre les statuts d'invitation" icon="monitor" title-type="p">
-    Envoyez les invitations par email. Chaque invité reçoit un lien vers le portail invité où il peut <code>accept</code> ou <code>refuse</code> la médiation et ajouter un commentaire à sa réponse. Dans Avosmarc, suivez ces réponses pour savoir qui a accepté, refusé ou n'a pas encore répondu.
+    Envoyez les invitations par email. Chaque invité reçoit un lien vers le portail invité où il peut accepter ou refuser la médiation et ajouter un commentaire à sa réponse. Dans Avosmarc, suivez ces réponses pour savoir qui a accepté, refusé ou n'a pas encore répondu.
   </Step>
 </Steps>
 
@@ -82,12 +82,12 @@ Ce guide vous accompagne pas à pas pour réaliser votre première médiation da
 ## 6. Suivre le statut du dossier et les réponses
 
 <Steps>
-  <Step title="Contrôler les réponses accept/refuse" icon="list" title-type="p">
-    Revenez régulièrement sur la liste des membres du dossier pour voir qui a répondu à l'invitation. Les réponses <code>accept</code> et <code>refuse</code>, ainsi que les commentaires associés, vous aident à décider de la suite à donner au dossier.
+  <Step title="Contrôler les réponses d'acceptation et de refus" icon="list" title-type="p">
+    Revenez régulièrement sur la liste des membres du dossier pour voir qui a répondu à l'invitation. Les réponses d'acceptation et de refus, ainsi que les commentaires associés, vous aident à décider de la suite à donner au dossier.
   </Step>
 
   <Step title="Faire évoluer le statut du dossier" icon="settings" title-type="p">
-    Quand toutes les parties concernées ont répondu, faites évoluer le dossier depuis le statut <code>brouillon</code> vers <code>en attente d’accord</code>, <code>actif</code> ou <code>clôturé</code> selon l'avancement de la médiation. Le statut du dossier vous permet de suivre clairement la phase dans laquelle se trouve chaque médiation.
+    Quand les parties concernées ont répondu, faites évoluer le dossier depuis le statut <code>brouillon</code> vers un statut adapté comme <code>en attente d’accord</code>, <code>actif</code>, <code>clôturé</code> ou <code>archivé</code> selon l'avancement de la médiation. Le statut du dossier vous permet de suivre clairement la phase dans laquelle se trouve chaque médiation.
   </Step>
 </Steps>
 
